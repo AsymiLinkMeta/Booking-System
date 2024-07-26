@@ -17,11 +17,12 @@ const CheckoutForm = () => {
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBookingDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/bookings/${bookingId}`);
+        const response = await axios.get(`${apiUrl}/bookings/${bookingId}`);
         const booking = response.data;
         setAmount(booking.service.price);
       } catch (error) {
@@ -30,7 +31,7 @@ const CheckoutForm = () => {
     };
 
     fetchBookingDetails();
-  }, [bookingId]);
+  }, [bookingId, apiUrl]);
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -61,10 +62,10 @@ const CheckoutForm = () => {
         amount,
       };
 
-      const response = await axios.post('http://localhost:3000/payments/create-checkout-session', paymentData);
+      const response = await axios.post(`${apiUrl}/payments/create-checkout-session`, paymentData);
       console.log('Payment successful:', response.data);
 
-      await axios.post(`http://localhost:3000/bookings/${bookingId}/confirm`, { paymentIntentId: response.data.paymentIntentId });
+      await axios.post(`${apiUrl}/bookings/${bookingId}/confirm`, { paymentIntentId: response.data.paymentIntentId });
 
       alert('Payment successful! Your booking has been confirmed.');
       setLoading(false);

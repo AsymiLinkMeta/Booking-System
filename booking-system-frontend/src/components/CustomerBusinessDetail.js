@@ -12,11 +12,12 @@ const CustomerBusinessDetail = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [reviews, setReviews] = useState([]);
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/businesses/${id}`);
+        const response = await axios.get(`${apiUrl}/businesses/${id}`);
         setBusiness(response.data);
       } catch (error) {
         console.error('Error fetching business details:', error);
@@ -24,13 +25,13 @@ const CustomerBusinessDetail = () => {
     };
 
     fetchBusiness();
-  }, [id]);
+  }, [id, apiUrl]);
 
   useEffect(() => {
     if (selectedService) {
       const fetchReviews = async () => {
         try {
-          const response = await axios.get(`http://localhost:3000/reviews/service/${selectedService.id}`);
+          const response = await axios.get(`${apiUrl}/reviews/service/${selectedService.id}`);
           setReviews(response.data);
         } catch (error) {
           console.error('Error fetching reviews:', error);
@@ -39,7 +40,7 @@ const CustomerBusinessDetail = () => {
 
       fetchReviews();
     }
-  }, [selectedService]);
+  }, [selectedService, apiUrl]);
 
   const handleReviewSubmitted = (newReview) => {
     setReviews((prevReviews) => [...prevReviews, newReview]);

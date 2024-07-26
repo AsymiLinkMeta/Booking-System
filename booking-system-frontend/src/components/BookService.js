@@ -13,11 +13,12 @@ const BookService = () => {
   const [endTime, setEndTime] = useState('');
   const [service, setService] = useState(null);
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchServiceDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/businesses/${businessId}/services`);
+        const response = await axios.get(`${apiUrl}/businesses/${businessId}/services`);
         const services = response.data;
         const matchedService = services.find(service => service.serviceName === serviceName);
         setService(matchedService);
@@ -27,7 +28,7 @@ const BookService = () => {
     };
 
     fetchServiceDetails();
-  }, [businessId, serviceName]);
+  }, [businessId, serviceName, apiUrl]);
 
   const formatTime = (time) => {
     let [hour, minute] = time.split(':').map(Number);
@@ -59,7 +60,7 @@ const BookService = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:3000/bookings', bookingData);
+      const response = await axios.post(`${apiUrl}/bookings`, bookingData);
       console.log('Booking created successfully:', response.data);
       navigate('/customer/bookings');
     } catch (error) {

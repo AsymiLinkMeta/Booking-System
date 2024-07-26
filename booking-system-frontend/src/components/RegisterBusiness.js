@@ -8,6 +8,7 @@ import '../styles/RegisterBusiness.css';
 const RegisterBusiness = () => {
   const { user, role } = useContext(AuthContext);
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const [formData, setFormData] = useState({
     name: '',
@@ -97,7 +98,7 @@ const RegisterBusiness = () => {
     e.preventDefault();
     console.log('Submitting formData:', formData); 
     try {
-      await axios.post('http://localhost:3000/businesses', formData);
+      await axios.post(`${apiUrl}/businesses`, formData);
       navigate('/businessowner/business-list');
     } catch (error) {
       console.error('Error registering business:', error);

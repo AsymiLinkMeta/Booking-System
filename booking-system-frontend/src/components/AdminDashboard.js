@@ -17,11 +17,12 @@ const AdminDashboard = () => {
   const [report, setReport] = useState({});
   const [error, setError] = useState('');
   const navigate = useNavigate();
-
+  const apiUrl = process.env.REACT_APP_API_URL;
+  
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/admin/businesses');
+        const response = await axios.get(`${apiUrl}/admin/businesses`);
         console.log('Fetched businesses:', response.data);
         setBusinesses(response.data);
       } catch (err) {
@@ -30,12 +31,12 @@ const AdminDashboard = () => {
       }
     };
     fetchBusinesses();
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/admin/users');
+        const response = await axios.get(`${apiUrl}/admin/users`);
         console.log('Fetched users:', response.data);
         setUsers(response.data);
       } catch (err) {
@@ -44,12 +45,12 @@ const AdminDashboard = () => {
       }
     };
     fetchUsers();
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/admin/bookings');
+        const response = await axios.get(`${apiUrl}/admin/bookings`);
         console.log('Fetched bookings:', response.data);
         setBookings(response.data);
       } catch (err) {
@@ -58,12 +59,12 @@ const AdminDashboard = () => {
       }
     };
     fetchBookings();
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     const fetchReport = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/admin/reports');
+        const response = await axios.get(`${apiUrl}/admin/reports`);
         console.log('Fetched report:', response.data);
         setReport(response.data);
       } catch (err) {
@@ -72,7 +73,7 @@ const AdminDashboard = () => {
       }
     };
     fetchReport();
-  }, []);
+  }, [apiUrl]);
 
   const handleLogout = () => {
     logout();

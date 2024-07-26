@@ -10,11 +10,12 @@ const CustomerBookings = () => {
   const [pastBookings, setPastBookings] = useState({});
   const [futureBookings, setFutureBookings] = useState({});
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/bookings/customer/${user.id}`);
+        const response = await fetch(`${apiUrl}/bookings/customer/${user.id}`);
         const data = await response.json();
 
         const today = new Date();
@@ -59,7 +60,7 @@ const CustomerBookings = () => {
 
   const handleCancel = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/bookings/${id}`, {
+      const response = await fetch(`${apiUrl}/bookings/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

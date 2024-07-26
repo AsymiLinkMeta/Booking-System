@@ -7,11 +7,12 @@ const BusinessOwnerBookings = () => {
   const { user } = useContext(AuthContext);
   const [pastBookings, setPastBookings] = useState({});
   const [futureBookings, setFutureBookings] = useState({});
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/bookings/business-owner/${user.id}`);
+        const response = await fetch(`${apiUrl}/bookings/business-owner/${user.id}`);
         const data = await response.json();
 
         console.log('Bookings data:', data);  
@@ -54,7 +55,7 @@ const BusinessOwnerBookings = () => {
     };
 
     fetchBookings();
-  }, [user.id]);
+  }, [user.id, apiUrl]);
 
   const formatDateString = (dateStr) => {
     const dateObj = parseISO(dateStr); 

@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [role, setRole] = useState(null);
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', { email, password });
+      const response = await axios.post(`${apiUrl}/auth/login`, { email, password });
       const { access_token, id, role } = response.data; 
       setUser({ token: access_token, id }); 
       setRole(role);
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, password, role) => {
     try {
-      await axios.post('http://localhost:3000/auth/register', { email, password, role });
+      await axios.post(`${apiUrl}/auth/register`, { email, password, role });
       await login(email, password); 
     } catch (error) {
       throw new Error(error.response?.data?.message || 'An error occurred during registration.');

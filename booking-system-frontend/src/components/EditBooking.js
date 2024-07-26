@@ -15,11 +15,12 @@ const EditBooking = () => {
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
   const [status, setStatus] = useState('');
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBooking = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/bookings/${id}`);
+        const response = await axios.get(`${apiUrl}/bookings/${id}`);
         const bookingData = response.data;
         setBooking(bookingData);
 
@@ -36,7 +37,7 @@ const EditBooking = () => {
     };
 
     fetchBooking();
-  }, [id]);
+  }, [id, apiUrl]);
 
   const formatDateString = (dateObj) => {
     const options = { weekday: 'long', year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -48,7 +49,7 @@ const EditBooking = () => {
 
     try {
       const updatedBooking = { date, startTime, endTime, status };
-      await axios.put(`http://localhost:3000/bookings/${id}`, updatedBooking);
+      await axios.put(`${apiUrl}/bookings/${id}`, updatedBooking);
       alert('Booking successfully updated');
       navigate('/customer/bookings');
     } catch (error) {

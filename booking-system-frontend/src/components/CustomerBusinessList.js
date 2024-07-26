@@ -6,11 +6,12 @@ import '../styles/BusinessList.css';
 
 const CustomerBusinessList = () => {
   const [businesses, setBusinesses] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/businesses');
+        const response = await axios.get(`${apiUrl}/businesses`);
         // Sort businesses alphabetically by name
         const sortedBusinesses = response.data.sort((a, b) => a.name.localeCompare(b.name));
         setBusinesses(sortedBusinesses);
@@ -20,7 +21,7 @@ const CustomerBusinessList = () => {
     };
 
     fetchBusinesses();
-  }, []);
+  }, [apiUrl]);
 
   return (
     <div className="business-list-container">

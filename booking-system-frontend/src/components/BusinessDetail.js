@@ -7,11 +7,12 @@ import '../styles/BusinessDetail.css';
 const BusinessDetail = () => {
   const { id } = useParams();
   const [business, setBusiness] = useState(null);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/businesses/${id}`);
+        const response = await axios.get(`${apiUrl}/businesses/${id}`);
         setBusiness(response.data);
       } catch (error) {
         console.error('Error fetching business details:', error);
@@ -19,7 +20,7 @@ const BusinessDetail = () => {
     };
 
     fetchBusiness();
-  }, [id]);
+  }, [id, apiUrl]);
 
   if (!business) {
     return <div>Loading...</div>;

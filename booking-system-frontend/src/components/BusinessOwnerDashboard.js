@@ -9,11 +9,12 @@ const BusinessOwnerDashboard = () => {
   const { logout, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [businesses, setBusinesses] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/businesses?ownerId=${user.id}`);
+        const response = await axios.get(`${apiUrl}/businesses?ownerId=${user.id}`);
         setBusinesses(response.data);
       } catch (error) {
         console.error('Error fetching businesses:', error);
@@ -21,7 +22,7 @@ const BusinessOwnerDashboard = () => {
     };
 
     fetchBusinesses();
-  }, [user.id]);
+  }, [user.id, apiUrl]);
 
   const handleLogout = () => {
     logout();

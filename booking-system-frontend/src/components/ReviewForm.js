@@ -8,6 +8,7 @@ const ReviewForm = ({ serviceId, businessId, onReviewSubmitted }) => {
   const { user } = useContext(AuthContext);
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState('');
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const handleRatingChange = (e) => {
     setRating(e.target.value);
@@ -20,7 +21,7 @@ const ReviewForm = ({ serviceId, businessId, onReviewSubmitted }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:3000/reviews`, {
+      const response = await axios.post(`${apiUrl}/reviews`, {
         rating,
         reviewText,
         serviceId,

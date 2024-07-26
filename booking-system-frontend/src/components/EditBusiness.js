@@ -7,6 +7,7 @@ import '../styles/RegisterBusiness.css';
 const EditBusiness = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -36,7 +37,7 @@ const EditBusiness = () => {
   useEffect(() => {
     const fetchBusiness = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/businesses/${id}`);
+        const response = await axios.get(`${apiUrl}/businesses/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error('Error fetching business:', error);
@@ -44,7 +45,7 @@ const EditBusiness = () => {
     };
 
     fetchBusiness();
-  }, [id]);
+  }, [id, apiUrl]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -98,7 +99,7 @@ const EditBusiness = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/businesses/${id}`, formData);
+      await axios.put(`${apiUrl}/businesses/${id}`, formData);
       navigate('/businessowner/business-list');
     } catch (error) {
       console.error('Error updating business:', error.response ? error.response.data : error.message);

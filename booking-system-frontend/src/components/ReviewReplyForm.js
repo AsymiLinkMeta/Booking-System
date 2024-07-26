@@ -5,7 +5,7 @@ import '../styles/ReviewReplyForm.css';
 
 const ReviewReplyForm = ({ reviewId, onReplySubmitted }) => {
   const [reply, setReply] = useState('');
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handleReplyChange = (e) => {
     setReply(e.target.value);
   };
@@ -13,7 +13,7 @@ const ReviewReplyForm = ({ reviewId, onReplySubmitted }) => {
   const handleReplySubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:3000/reviews/${reviewId}`, { ownerReply: reply });
+      await axios.patch(`${apiUrl}/reviews/${reviewId}`, { ownerReply: reply });
       onReplySubmitted();
       setReply('');
     } catch (error) {
