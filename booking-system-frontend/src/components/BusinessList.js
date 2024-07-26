@@ -13,7 +13,7 @@ const BusinessList = () => {
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        const response = await axios.get(`{${apiUrl}/businesses/owner/${user.id}`);
+        const response = await axios.get(`${apiUrl}/businesses/owner/${user.id}`);
         setBusinesses(response.data);
       } catch (error) {
         console.error('Error fetching businesses:', error);
