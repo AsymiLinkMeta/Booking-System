@@ -1,0 +1,48 @@
+/* src/styles/EditBooking.css */
+.edit-booking-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-booking-container h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .edit-booking-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .edit-booking-container label {
+    font-weight: bold;
+    color: #666;
+  }
+  
+  .edit-booking-container input,
+  .edit-booking-container select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .edit-booking-container button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-booking-container button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,12 @@
+/* src/styles/Report.css */
+.report {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .report p {
+    margin: 5px 0;
+  }
+  

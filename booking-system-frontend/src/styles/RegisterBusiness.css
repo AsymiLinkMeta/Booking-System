@@ -1,0 +1,72 @@
+.register-business-container {
+    padding: 20px;
+    background-color: #f7f9fc;
+    color: #333;
+  }
+  
+  .register-business-form div {
+    margin-bottom: 10px;
+  }
+  
+  .register-business-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .register-business-form input,
+  .register-business-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .register-business-form .service-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  .register-business-form .service-item button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .register-business-form .service-item button:hover {
+    background-color: #ff4c4c;
+  }
+  
+  .register-business-form button[type="submit"] {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .register-business-form button[type="submit"]:hover {
+    background-color: #ff4c4c;
+  }
+  
+  .register-business-form button[type="button"] {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .register-business-form button[type="button"]:hover {
+    background-color: #ff4c4c;
+  }
+  

@@ -1,0 +1,54 @@
+/* src/styles/BusinessOwnerDashboard.css */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #007bff;
+  color: white;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dashboard-nav {
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+.dashboard-nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dashboard-nav ul li {
+  margin: 0.5rem 0;
+}
+
+.dashboard-nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+.dashboard-nav ul li a:hover {
+  color: #0056b3;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}

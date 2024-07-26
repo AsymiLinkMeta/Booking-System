@@ -1,0 +1,50 @@
+/* src/styles/ReviewList.css */
+.review-list {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+  
+  .review-list h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .review-card {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    margin-bottom: 15px;
+  }
+  
+  .review-card:last-child {
+    border-bottom: none;
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .review-header strong {
+    font-size: 1.1em;
+    color: #333;
+  }
+  
+  .review-rating {
+    background-color: #ffd700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #fff;
+  }
+  
+  .review-text {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #555;
+  }
+  

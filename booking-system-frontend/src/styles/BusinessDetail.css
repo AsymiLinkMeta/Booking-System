@@ -1,0 +1,32 @@
+/* src/styles/BusinessDetail.css */
+
+.business-detail-container {
+  padding: 20px;
+}
+
+.business-detail-container h2,
+.business-detail-container h3 {
+  margin-top: 20px;
+}
+
+.business-detail-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.business-detail-container li {
+  margin-bottom: 10px;
+}
+
+.book-service-button, .review-service-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.book-service-button:hover, .review-service-button:hover {
+  background-color: #0056b3;
+}

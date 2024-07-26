@@ -1,0 +1,17 @@
+/* src/styles/BookingList.css */
+.booking-list {
+    padding: 10px;
+  }
+  
+  .booking-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .booking-item p {
+    margin: 5px 0;
+  }
+  
