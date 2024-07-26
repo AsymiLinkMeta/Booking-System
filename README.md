@@ -83,7 +83,7 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
     DATABASE_NAME=
     ```
 
-4. Run the backend server (default port 3001):
+4. Run the backend server (default port 3000):
     ```sh
     npm run start
     ```
@@ -105,12 +105,12 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
     REACT_APP_STRIPE_PUBLIC_KEY=
     ```
 
-4. Run the frontend server (default port 3000):
+4. Run the frontend server (default port 3001):
     ```sh
     npm start
     ```
 
-You can access the frontend at [http://localhost:3000](http://localhost:3000) and the backend at [http://localhost:3001](http://localhost:3001).
+You can access the frontend at [http://localhost:3001](http://localhost:3001) and the backend at [http://localhost:3000](http://localhost:3000).
 
 ### Testing with Stripe Payment
 
