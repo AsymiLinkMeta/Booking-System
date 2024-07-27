@@ -6,6 +6,7 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
 1. [Features](#features)
 2. [Tech Stack](#tech-stack)
 3. [Installation](#installation)
+4. [Deployment](#deployment)
 
 ## Features
 
@@ -51,6 +52,9 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
 [![Stripe](https://img.shields.io/badge/Stripe-008CDD?style=for-the-badge&logo=stripe&logoColor=white)](https://stripe.com/)
 
 [![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io/)
+
+[![Render](https://img.shields.io/badge/Render-0468D7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
+
 
 ## Installation
 
@@ -100,17 +104,25 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
     npm install
     ```
 
-3. Set up the environment variables in a `.env` file:
-    ```plaintext
-    REACT_APP_STRIPE_PUBLIC_KEY=
-    ```
+3. Set up the environment variables:
+    - For development: Create a `.env.development` file with the following content:
+      ```plaintext
+      REACT_APP_API_URL=http://localhost:3000
+      REACT_APP_STRIPE_PUBLIC_KEY=
+      ```
+
+    - For production: Create a `.env.production` file with the following content:
+      ```plaintext
+      REACT_APP_API_URL=https://booking-system-backend-i7qd.onrender.com
+      REACT_APP_STRIPE_PUBLIC_KEY=
+      ```
 
 4. Run the frontend server (default port 3001):
     ```sh
     npm start
     ```
 
-You can access the frontend at [http://localhost:3001](http://localhost:3001) and the backend at [http://localhost:3000](http://localhost:3000).
+You can access the frontend at [http://localhost:3001](http://localhost:3001) for development and [https://booking-system-muqm.onrender.com](https://booking-system-muqm.onrender.com) for production. The backend can be accessed at [http://localhost:3000](http://localhost:3000) for development and [https://booking-system-backend-i7qd.onrender.com](https://booking-system-backend-i7qd.onrender.com) for production.
 
 ### Testing with Stripe Payment
 
@@ -120,3 +132,14 @@ To test payments with Stripe, use the following test card details:
 - **Expiry Date**: Any future date
 - **CVC**: Any 3 digits
 - **ZIP Code**: Any 5 digits
+
+## Deployment
+
+### Render Deployment Links
+
+- Frontend: [https://booking-system-muqm.onrender.com](https://booking-system-muqm.onrender.com)
+- Backend: [https://booking-system-backend-i7qd.onrender.com](https://booking-system-backend-i7qd.onrender.com)
+
+Ensure that the environment variables are correctly set for production deployment to enable proper functionality.
+
+---
