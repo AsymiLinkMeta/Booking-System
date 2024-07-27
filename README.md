@@ -38,7 +38,7 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
     - Allow customers to leave reviews and ratings for businesses.
 
 7. **Admin Dashboard**
-    - Monitor all registered businesses, user activities, and bookings.
+    - Monitor all registered businesses, display user accounts, and track bookings.
     - Generate reports and analytics.
 
 ## Tech Stack
