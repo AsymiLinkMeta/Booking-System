@@ -111,13 +111,7 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
       REACT_APP_API_URL=http://localhost:3000
       REACT_APP_STRIPE_PUBLIC_KEY=
       ```
-
-    - For production: Create a `.env.production` file with the following content:
-      ```plaintext
-      REACT_APP_API_URL=https://booking-system-backend-i7qd.onrender.com
-      REACT_APP_STRIPE_PUBLIC_KEY=
-      ```
-
+      
 4. Run the frontend server (default port 3001):
     ```sh
     npm start
@@ -140,7 +134,5 @@ To test payments with Stripe, use the following test card details:
 
 - Frontend: [https://booking-system-muqm.onrender.com](https://booking-system-muqm.onrender.com)
 - Backend: [https://booking-system-backend-i7qd.onrender.com](https://booking-system-backend-i7qd.onrender.com)
-
-Ensure that the environment variables are correctly set for production deployment to enable proper functionality.
 
 ---
