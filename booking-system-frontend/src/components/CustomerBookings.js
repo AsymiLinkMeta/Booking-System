@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { format, parseISO, isBefore } from 'date-fns'; 
+import { format, parseISO, isBefore, isEqual } from 'date-fns'; 
 import '../styles/CustomerBookings.css';
 
 const CustomerBookings = () => {
@@ -22,9 +22,15 @@ const CustomerBookings = () => {
         const past = {};
         const future = {};
 
-        data.forEach(booking => {
+        for (const booking of data) {
           const bookingDate = parseISO(booking.date); 
           const bookingDateString = format(bookingDate, 'yyyy-MM-dd'); 
+
+          // Check if the booking date is past and payment status is pending
+          if (isBefore(bookingDate, today) && booking.paymentStatus !== 'paid' && booking.status !== 'Cancelled') {
+            await cancelBooking(booking.id); // Automatically cancel the booking
+            booking.status = 'Cancelled'; // Update booking status locally
+          }
 
           if (isBefore(bookingDate, today)) {
             if (!past[bookingDateString]) past[bookingDateString] = [];
@@ -33,7 +39,7 @@ const CustomerBookings = () => {
             if (!future[bookingDateString]) future[bookingDateString] = [];
             future[bookingDateString].push(booking);
           }
-        });
+        }
 
         // Sort bookings by date
         for (const key in past) {
@@ -47,6 +53,22 @@ const CustomerBookings = () => {
         setFutureBookings(future);
       } catch (error) {
         console.error('Error fetching bookings:', error);
+      }
+    };
+
+    const cancelBooking = async (id) => {
+      try {
+        const response = await fetch(`${apiUrl}/bookings/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+
+        if (!response.ok) throw new Error('Error cancelling booking');
+      } catch (error) {
+        console.error('Error cancelling booking:', error);
       }
     };
 
@@ -102,6 +124,10 @@ const CustomerBookings = () => {
   return (
     <div className="bookings-container">
       <h2>Your Bookings</h2>
+
+      <div className="warning-message">
+        <p>Note: Bookings will be automatically cancelled if payment is not made before the booking date.</p>
+      </div>
 
       <h3>Past Bookings</h3>
       {Object.keys(pastBookings).length === 0 ? (
