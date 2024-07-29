@@ -55,6 +55,7 @@ Welcome to the Booking System! This project is designed to facilitate easy and e
 
 [![Render](https://img.shields.io/badge/Render-0468D7?style=for-the-badge&logo=render&logoColor=white)](https://render.com/)
 
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.io/)
 
 ## Installation
 
