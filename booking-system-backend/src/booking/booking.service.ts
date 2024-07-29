@@ -107,6 +107,11 @@ export class BookingService {
     const startTime = this.parseTime(createBookingDto.startTime);
     const endTime = this.parseTime(createBookingDto.endTime);
 
+    // Validation: Start time must be earlier than end time
+    if (startTime >= endTime) {
+      throw new BadRequestException('Start time must be earlier than end time');
+    }
+
     if (startTime < openTime || endTime > closeTime) {
       throw new BadRequestException('Booking time is outside of business hours');
     }

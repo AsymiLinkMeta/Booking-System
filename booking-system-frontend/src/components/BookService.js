@@ -50,6 +50,12 @@ const BookService = () => {
       return;
     }
 
+    // Check that start time is before end time
+    if (startTime >= endTime) {
+      alert('Start time must be earlier than end time.');
+      return;
+    }
+
     const bookingData = {
       date: bookingDate,
       startTime: formatTime(startTime),
