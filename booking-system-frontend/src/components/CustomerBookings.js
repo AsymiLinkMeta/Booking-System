@@ -26,8 +26,8 @@ const CustomerBookings = () => {
           const bookingDate = parseISO(booking.date); 
           const bookingDateString = format(bookingDate, 'yyyy-MM-dd'); 
 
-          // Check if the booking date is past and payment status is pending
-          if (isBefore(bookingDate, today) && booking.paymentStatus !== 'paid' && booking.status !== 'Cancelled') {
+         // Check if the booking date is today or in the past and payment status is pending
+         if ((isBefore(bookingDate, today) || isEqual(bookingDate, today)) && booking.paymentStatus !== 'paid' && booking.status !== 'Cancelled') {
             await cancelBooking(booking.id); // Automatically cancel the booking
             booking.status = 'Cancelled'; // Update booking status locally
           }
