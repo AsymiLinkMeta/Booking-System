@@ -2,6 +2,7 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthContext, AuthProvider } from './contexts/AuthContext';
+import LandingPage from './components/LandingPage';
 import Register from './components/Register';
 import Login from './components/Login';
 import AdminDashboard from './components/AdminDashboard';
@@ -55,7 +56,7 @@ const App = () => {
             user ? (
               <NavigateToDashboard role={role} />
             ) : (
-              <Navigate to="/register" />
+              <LandingPage />
             )
           }
         />
