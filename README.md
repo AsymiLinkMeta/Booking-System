@@ -75,22 +75,31 @@ Welcome to TSL Mini Plant Hire! This project is designed to facilitate easy and 
 
 2. Install dependencies:
     ```sh
-    npm install
+    npm install --legacy-peer-deps --no-optional
     ```
 
 3. Set up the environment variables in a `.env` file:
     ```plaintext
-    STRIPE_SECRET_KEY=
-    DATABASE_HOST=
-    DATABASE_PORT=
-    DATABASE_USERNAME=
-    DATABASE_PASSWORD=
-    DATABASE_NAME=
+    STRIPE_SECRET_KEY=your_stripe_secret_key
+    DATABASE_HOST=aws-0-ap-southeast-2.pooler.supabase.com
+    DATABASE_PORT=6543
+    DATABASE_USERNAME=postgres.wvonfwtzomkucwmtylcq
+    DATABASE_PASSWORD=your_supabase_password
+    DATABASE_NAME=postgres
+    JWT_SECRET=your-secret-key-change-this-in-production
+    PORT=3000
+    NODE_ENV=development
     ```
 
 4. Run the backend server (default port 3000):
     ```sh
-    npm run start
+    npm run start:dev
+    ```
+
+    For production:
+    ```sh
+    npm run build
+    npm run start:prod
     ```
 
 ### Frontend Setup
@@ -117,7 +126,19 @@ Welcome to TSL Mini Plant Hire! This project is designed to facilitate easy and 
     npm start
     ```
 
-You can access the frontend at [http://localhost:3001](http://localhost:3001) for development and [https://booking-system-muqm.onrender.com](https://booking-system-muqm.onrender.com) for production. The backend can be accessed at [http://localhost:3000](http://localhost:3000) for development and [https://booking-system-backend-i7qd.onrender.com](https://booking-system-backend-i7qd.onrender.com) for production.
+You can access the frontend at [http://localhost:3001](http://localhost:3001) for local development. The backend can be accessed at [http://localhost:3000](http://localhost:3000) for local development.
+
+### Database Setup
+
+The application uses Supabase PostgreSQL database. The database schema includes:
+
+- **users** - User accounts with roles (admin, businessowner, customer)
+- **businesses** - Business profiles with hours and services
+- **services** - Services offered by businesses
+- **bookings** - Customer bookings with status tracking
+- **reviews** - Customer reviews and ratings
+
+All tables have Row Level Security (RLS) enabled for data protection.
 
 ### Testing with Stripe Payment
 
@@ -130,9 +151,38 @@ To test payments with Stripe, use the following test card details:
 
 ## Deployment
 
-### Render Deployment Links
+### Deployment Guide
 
-- Frontend: [https://booking-system-muqm.onrender.com](https://booking-system-muqm.onrender.com)
-- Backend: [https://booking-system-backend-i7qd.onrender.com](https://booking-system-backend-i7qd.onrender.com)
+**Backend Deployment (Render/Heroku/Railway):**
+1. Create a new web service
+2. Connect your repository
+3. Set build command: `npm install --legacy-peer-deps --no-optional && npm run build`
+4. Set start command: `npm run start:prod`
+5. Add environment variables from `.env` file
+
+**Frontend Deployment (Vercel/Netlify/Render):**
+1. Create a new static site
+2. Connect your repository
+3. Set build command: `npm run build`
+4. Set publish directory: `build`
+5. Add environment variables:
+   - `REACT_APP_API_URL`: Your backend URL
+   - `REACT_APP_STRIPE_PUBLIC_KEY`: Your Stripe public key
+
+**Database:**
+- Already configured with Supabase PostgreSQL
+- Connection details in backend `.env` file
+- Migrations applied in `/supabase/migrations/`
+
+### Environment Variables Checklist
+
+**Backend (.env):**
+- STRIPE_SECRET_KEY
+- DATABASE_PASSWORD
+- JWT_SECRET
+
+**Frontend (.env.production):**
+- REACT_APP_API_URL
+- REACT_APP_STRIPE_PUBLIC_KEY
 
 ---
