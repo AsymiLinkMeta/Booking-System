@@ -1,6 +1,6 @@
-<h1 align="center">Booking System</h1>
+<h1 align="center">TSL Mini Plant Hire</h1>
 
-Welcome to the Booking System! This project is designed to facilitate easy and efficient booking management for various types of businesses, with a focus on local businesses, using a robust and scalable technology stack. It includes comprehensive features for user authentication, business and booking management, payment integration, and more.
+Welcome to TSL Mini Plant Hire! This project is designed to facilitate easy and efficient booking management for mini plant equipment hire, using a robust and scalable technology stack. It includes comprehensive features for user authentication, business and booking management, payment integration, and more.
 
 ## Table of Contents
 1. [Features](#features)
